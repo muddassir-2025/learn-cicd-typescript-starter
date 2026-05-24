@@ -1,11 +1,17 @@
-export default defineConfig([
+import js from "@eslint/js";
+import globals from "globals";
+import tseslint from "typescript-eslint";
+
+export default [
   {
     ignores: ["dist/**", "coverage/**", "node_modules/**"],
   },
 
   {
     files: ["**/*.{js,mjs,cjs,ts,mts,cts}"],
-    plugins: { js },
+    plugins: {
+      js,
+    },
     extends: ["js/recommended"],
     languageOptions: {
       globals: globals.browser,
@@ -13,4 +19,4 @@ export default defineConfig([
   },
 
   tseslint.configs.recommended,
-]);
+];
