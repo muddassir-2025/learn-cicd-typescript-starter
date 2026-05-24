@@ -6,7 +6,6 @@ const person = {
 };
 
 describe("person", () => {
-
   test("person is defined", () => {
     expect(person).toBeDefined();
   });
@@ -15,10 +14,9 @@ describe("person", () => {
     expect(person.isActive).toBeTruthy();
   });
 
-  test("is age > 18", ()=>{
+  test("is age > 18", () => {
     expect(person.age).toBeGreaterThan(18);
-  })
-
+  });
 });
 
 describe("fixed add test", () => {
@@ -26,4 +24,3 @@ describe("fixed add test", () => {
     expect(1 + 2).toBe(3);
   });
 });
-
