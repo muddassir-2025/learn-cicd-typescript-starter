@@ -9,14 +9,11 @@ export default [
 
   {
     files: ["**/*.{js,mjs,cjs,ts,mts,cts}"],
-    plugins: {
-      js,
-    },
-    extends: ["js/recommended"],
+    ...js.configs.recommended,
     languageOptions: {
       globals: globals.browser,
     },
   },
 
-  tseslint.configs.recommended,
+  ...tseslint.configs.recommended,
 ];
