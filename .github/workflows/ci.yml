@@ -42,4 +42,7 @@ jobs:
 
       - name: Check formatting
         run: npm run format:check
+      
+      - name: check linting
+        run: npm run format:check  
 
