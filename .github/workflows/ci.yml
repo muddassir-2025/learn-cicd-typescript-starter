@@ -25,5 +25,69 @@ jobs:
         run: npm run test
       
       - name : coverage
-        run: npm run test -- --coverage  
+       run: npm run test -- --coverage  
+     
+    Yes — you need to create a **second job** inside your GitHub Actions workflow.
+
+You probably currently have something like:
+
+```yml id="q6h2zy"
+jobs:
+  tests:
+```
+
+Now add another job:
+
+```yml id="j9m4tw"
+style:
+```
+
+Complete example:
+
+```yml id="f3t8va"
+name: CI
+
+on:
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  tests:
+    name: Tests
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Run tests
+        run: npm test -- --coverage
+
+  style:
+     name: Style
+     runs-on: ubuntu-latest
+
+     steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Check formatting
+        run: npm run format:check
 
